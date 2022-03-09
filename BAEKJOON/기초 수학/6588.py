@@ -1,19 +1,25 @@
 import math
+from operator import is_
 import sys
 import time
 
+read = sys.stdin.readlines
 
-read = sys.stdin.readline
+number = list(map(int,read()))
 
-num1, num2 = map(int,read().split())
-start_time = time.time()
+def is_prime(num):
+    
+    for i in range(2, int(num**0.5)+1):
+        if num % i == 0:
+            return False 
+    
+    return True
 
-def counting_num(num, N):
-    count = 0
-    while num > 0:
-        num = num // N
-        count += num
-
-    return count
-
-print(min(counting_num(num1,5)-counting_num(num2,5)-counting_num(num1-num2,5), counting_num(num1,2)-counting_num(num2,2)-counting_num(num1-num2,2)))
+for i in number:
+    for j in range(3, i, 2):
+        if is_prime(j) and is_prime(i - j):
+            print("{} = {} + {}".format(i, j, i-j))
+            break
+        if j > i//2:
+            print("Goldbach's conjecture is wrong.")
+            break;
