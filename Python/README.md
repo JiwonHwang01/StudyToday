@@ -25,7 +25,7 @@ for i in range(20):
 
 # list comprehension 사용한 코드
 list = [ i for i in range(20) if i % 2 == 1]
-
+```
 ## 알고리즘
 #### 그리디
 > 그리디 알고리즘은 현재 상황에서 지금 당장 좋은 것만 고르는 방법
