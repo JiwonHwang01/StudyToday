@@ -1,4 +1,3 @@
-from itertools import combinations
 import sys
 
 word = sys.stdin.readline()

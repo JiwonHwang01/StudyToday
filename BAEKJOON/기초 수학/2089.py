@@ -1,41 +1,21 @@
--13
-6 ... 1
--3 ... 0
-1 ... 1
-0 ... 1
+import sys
 
+integer = int(sys.stdin.readline())
+m_bin = ""
+remain = 0
 
+if integer == 0:
+        m_bin = "0"
 
-0 = 0 # 0-1 2-5 6-13   2 4 8
-1 = 1 
-2 = 110 
-3 = 111 
-4 = 100 
-5 = 101 
-6 = 11010 
-7 = 11011 
-8 = 11000 
-9 = 11001 
-10 = 11110
-11 = 11111
-12 = 11100
-13 = 11101
+while integer:
+    if integer == 2:
+        m_bin = "110"+m_bin
+        break
+    remain = integer % -2 * -1
+    if remain == 0 :
+        integer = integer // -2
+    else :    
+        integer = integer // -2 + 1
+    m_bin = str(remain) + m_bin
 
--1 = 11 # 2 6 10
--2 = 10 
--3 = 1101
--4 = 1110
--5 = 1111
--6 = 1110
--7 = 1001
--8 = 1000
--9 = 110011
--10 = 110010
--11 = 110101
--12
--13
--14
--15
-16
-17
-18
+print(m_bin)
