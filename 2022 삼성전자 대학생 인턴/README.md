@@ -25,3 +25,8 @@
 
 ### 필수 영어 성적 (OPIc)
 > 2020년 3월 21일~ 2022년 3월 21일까지의 성적을 인정
+
+### 자소서 참고 자료
+https://m.newspim.com/news/view/20220223001140
+https://www.sedaily.com/NewsVIew/22H94WLF3S
+https://www.boannews.com/media/view.asp?idx=49237&kind=4
