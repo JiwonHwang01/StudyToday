@@ -1,10 +1,8 @@
 import sys
-import time
-from tracemalloc import start
 
 e, s, m = map(int,sys.stdin.readline().split())
 count = 0
-start_time = time.time()
+
 for i in range(7980):
     e += 1
     s += 1
@@ -21,5 +19,3 @@ for i in range(7980):
     if e == 15 and s == 28 and m == 19:
         print(7980 - count)
         break
-end_time = time.time()
-print(end_time-start_time)
