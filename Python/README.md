@@ -13,9 +13,8 @@ start_time = time.time()
 end_time = time.time()
 print(end_time - start_time) 
 ```
-
 ## List
-* List comprehension
+* List comprehension(축약)
 ```python
 # for문으로 홀수를 하나씩 append 하는 코드
 list = []
@@ -26,6 +25,29 @@ for i in range(20):
 # list comprehension 사용한 코드
 list = [ i for i in range(20) if i % 2 == 1]
 ```
+
+## Function -
+* Variadic Arguments(가변인자)
+    + *args 
+    > Non-key Arguments
+    ```python
+    def foo(arg1, *argv):
+        print("First arg :",arg1)
+        for arg in argv:
+            print("Next arg in argv", arg)
+    ```
+    + **keyArgs
+    ```python
+    def foo(**keyArgv):
+        for key, val in keyArgv.items():
+            print("%s == %s" %(key, val))
+    
+    foo(first = 'Jiwon', mid='finally', last = 'win')
+    ```
+    > Key Arguments
+
+
+
 ## 알고리즘
 #### 그리디
 > 그리디 알고리즘은 현재 상황에서 지금 당장 좋은 것만 고르는 방법
