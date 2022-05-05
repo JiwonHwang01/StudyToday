@@ -26,7 +26,7 @@ for i in range(20):
 list = [ i for i in range(20) if i % 2 == 1]
 ```
 
-## Function -
+## Function
 * Variadic Arguments(가변인자)
     + *args 
     > Non-key Arguments
@@ -37,6 +37,7 @@ list = [ i for i in range(20) if i % 2 == 1]
             print("Next arg in argv", arg)
     ```
     + **keyArgs
+    > Key-Value Arguments
     ```python
     def foo(**keyArgv):
         for key, val in keyArgv.items():
@@ -44,7 +45,6 @@ list = [ i for i in range(20) if i % 2 == 1]
     
     foo(first = 'Jiwon', mid='finally', last = 'win')
     ```
-    > Key Arguments
 
 
 
