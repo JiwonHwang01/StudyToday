@@ -67,7 +67,7 @@ for i in range(len(count)):
     → 매 상황에서 가장 적은 비용의 노드를 선택
     
 
-## 동작 과정
+#### 동작 과정
 
 1. 출발 노드 설정
 2. 최단 거리 테이블을 초기화
@@ -79,44 +79,4 @@ for i in range(len(count)):
 5. 3번과 4번의 반복
 
 > <img width="306" alt="image" src="https://user-images.githubusercontent.com/72727113/174304460-71ccdd01-2472-4394-96fe-194a4efcd9ab.png">
-
-```python
-import heapq
-import sys
-input = sys.stdin.readline
-INF = int(1e9)
-
-# 노드의 개수, 간선의 개수
-n, m = map(int, input().split())
-# 시작 노드
-start = int(input())
-
-graph = [[] for i in range(n+1)]
-
-distance = [INF] * (n+1)
-
-# 간선 정보 입력 받기
-for _ in range(m):
-	a, b, c = map(int, input(splite))
-	# a to b, cost is c
-	graph[a].append((b,c))
-
-def dijkstra(start):
-	q = []
-	
-	heapq.heappush(q, (0, start))
-	distance[start] = 0
-
-	while q: # 큐가 비어있지 않다면
-		
-		dist, now = heapq.heappop(q)
-		if distance[now] < dist: # 이미 처리된 노드 탈출
-			continue
-		for i in graph[now]:
-			cost = dost + i[1]
-			if cost < distance[i[0]]:
-				distance[i[0]] = cost
-				heapq.heappush(q, (cost, i[0]))
-
-dijkstra(start)
-```
+- [다익스트라 코드 보기](https://github.com/JiwonHwang01/StudyToday/blob/main/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/Dijkstra.py)
