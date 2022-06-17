@@ -19,69 +19,104 @@
 ### DFS
 
 - stack과 recursion 사용
-    
-    ```python
-    graph = [ # index 0번은 비움
-    	[],
-    	[2, 3, 8],
-    	[1, 7],
-    	[1, 4, 5],
-    	[3, 5],
-    	[3, 4],
-    	[7],
-    	[2, 6, 8],
-    	[1, 7]
-    ]
-    
-    visited = [False] * 9
-    	
-    
-    def dfs(graph, v, visited):
-    	visited[v] = True
-    	
-    	print(v, end= ' ')
-    	for i in graph[v]:
-    		if not visited[i]:
-    			dfs(graph, i, visited)
-    ```
+- [DFS 코드 보기](https://github.com/JiwonHwang01/StudyToday/edit/main/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/DFS.py)
     
 
 ### BFS
 
 - queue를 사용
 - 최단경로 문제에도 효과적으로 사용
+- [BFS 코드 보기](https://github.com/JiwonHwang01/StudyToday/edit/main/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/BFS.py)
+
+## 정렬
+> 퀵이랑 계수 정렬만
+### 퀵 정렬
+
+- pivot 값을 첫번째 값으로 설정하고, 왼쪽부터 찾아서 pivot보다 큰수와 오른쪽부터 찾아서 pivot보다 작은값을 찾아서 바꾸는데,  큰 수가 작은 수보다 더 오른쪽에 있을때는 작은 수와 pivot 값을 바꾸고 왼쪽과 오른쪽에 대해서 recursion 수행
+- 대부분의 경우에 적합하며, 충분히 빠름
+- 시간 복잡도
+    - 평균 O(Nlog(N)) 
+    - 최악 O(N<sup>2</sup>)
+
+> [파이썬 List Comprehension 을 사용해서 간단하게 구현](https://github.com/JiwonHwang01/StudyToday/edit/main/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/quickSort.py)
+
+
+### 계수 정렬
+
+- 데이터의 **범위가 제한**되어 정수로 표현할 수 있을 때 매우 빠름
+
+```python
+count = [0] * (max(array) + 1)
+
+for i in range(len(array)):
+		count[array[i]] += 1
+
+for i in range(len(count)):
+		for j in range(count[i]):
+				print(count[i])
+```
+
+- 시간 복잡도 ( N개의 정수, K까지의 범위 )
+    - O(N+K)
+
+## 다익스트라
+- 특정한 노드에서 출발하여 다른 모든 노드로 가는 최단 경로를 계산
+- 음의 간선이 없을 때 정상적으로 동작함
+- 분류하자면 그리디 알고리즘으로 분류
     
-    ```python
-    from collections import deque
+    → 매 상황에서 가장 적은 비용의 노드를 선택
     
-    graph = [ # index 0번은 비움
-    	[],
-    	[2, 3, 8],
-    	[1, 7],
-    	[1, 4, 5],
-    	[3, 5],
-    	[3, 4],
-    	[7],
-    	[2, 6, 8],
-    	[1, 7]
-    ]
-    
-    visited = [False] * 9
-    
-    def bfs(graph, start, visited):
-    	queue = deque([start])
-    	# 현재 노드를 방문 처리
-    	visited[start] = True
-    	
-    	while queue:
-    		# queue에서 하나씩 출력
-    		v = queue.popleft()
-    		print(v, end= ' ')
-    		# 아직 방문하지 않은 인접한 원소들을 큐에 삽입
-    		for i in graph[v]:
-    			if not visited[i]:
-    				queue.append(i)
-    				visited[i] = True
-    
-    bfs(graph, 1, visited)
-    ```
+
+## 동작 과정
+
+1. 출발 노드 설정
+2. 최단 거리 테이블을 초기화
+    1. 거치지 않은 노드의 값을 무한으로 수정함
+3. 방문하지 않은 노드 중 최단거리 노드 선택
+4. 해당 노드를 거쳐서 다른 노드로 가는 비용을 계산하여 테이블 갱신
+    1. 비용이 노드의 현재값보다 작으면 갱신
+    2. 갱신이 되는 노드를 우선순위 큐에 삽입 ( 우선순위큐는 비용으로 정렬 )
+5. 3번과 4번의 반복
+
+> <img width="306" alt="image" src="https://user-images.githubusercontent.com/72727113/174304460-71ccdd01-2472-4394-96fe-194a4efcd9ab.png">
+
+```python
+import heapq
+import sys
+input = sys.stdin.readline
+INF = int(1e9)
+
+# 노드의 개수, 간선의 개수
+n, m = map(int, input().split())
+# 시작 노드
+start = int(input())
+
+graph = [[] for i in range(n+1)]
+
+distance = [INF] * (n+1)
+
+# 간선 정보 입력 받기
+for _ in range(m):
+	a, b, c = map(int, input(splite))
+	# a to b, cost is c
+	graph[a].append((b,c))
+
+def dijkstra(start):
+	q = []
+	
+	heapq.heappush(q, (0, start))
+	distance[start] = 0
+
+	while q: # 큐가 비어있지 않다면
+		
+		dist, now = heapq.heappop(q)
+		if distance[now] < dist: # 이미 처리된 노드 탈출
+			continue
+		for i in graph[now]:
+			cost = dost + i[1]
+			if cost < distance[i[0]]:
+				distance[i[0]] = cost
+				heapq.heappush(q, (cost, i[0]))
+
+dijkstra(start)
+```
