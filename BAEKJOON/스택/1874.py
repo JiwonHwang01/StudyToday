@@ -6,7 +6,7 @@ pStack = 1
 for i in range(t):
     num = int(input())
     if flag == 1:
-        continue
+        break
     while pStack <= num:
         stack.append(pStack)
         res += "+"
