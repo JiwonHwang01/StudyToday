@@ -18,7 +18,6 @@ def bfs(x, y):
                     queue.append([nx, ny])
                     visited[nx][ny] = True
     
-
 read = sys.stdin.readline
 n = int(read())
 
