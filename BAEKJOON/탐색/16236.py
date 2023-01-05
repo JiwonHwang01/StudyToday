@@ -1,4 +1,4 @@
-# 16236 아기상어
+# 16236 아기상어 DFS
 import sys
 from collections import deque
 read = sys.stdin.readline
