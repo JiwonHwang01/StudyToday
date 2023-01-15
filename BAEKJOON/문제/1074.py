@@ -1,4 +1,4 @@
-# 1074 Z
+# 1074 Z 분할정복
 import sys
 
 read = sys.stdin.readline
