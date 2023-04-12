@@ -1,25 +1,25 @@
-import math
-from operator import is_
 import sys
-import time
+read = sys.stdin.readline
+number = []
+while True:
+    n = int(read())
+    if n == 0:
+        break
+    number.append(n)
 
-read = sys.stdin.readlines
+p = [True] * (max(number)+1)
 
-number = list(map(int,read()))
-
-def is_prime(num):
-    
-    for i in range(2, int(num**0.5)+1):
-        if num % i == 0:
-            return False 
-    
-    return True
+for i in range(4, len(p)):
+    for j in range(2,int(i**0.5)+1):
+        if i % j == 0:
+            p[i] = False
+            break
 
 for i in number:
     for j in range(3, i, 2):
-        if is_prime(j) and is_prime(i - j):
+        if p[j] and p[i - j]:
             print("{} = {} + {}".format(i, j, i-j))
             break
         if j > i//2:
             print("Goldbach's conjecture is wrong.")
-            break;
+            break
