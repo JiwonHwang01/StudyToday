@@ -1,7 +1,11 @@
 # Git 관리
 
 ## 1. Git 명령어
-
+* git add
+    * -u
+```diff
++ #TODO
+````
 ## 2. 마크다운 문법
 ### 2.1. Heading
 ```
